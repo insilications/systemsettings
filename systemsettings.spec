@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : systemsettings
-Version  : 5.13.4
-Release  : 3
-URL      : https://download.kde.org/stable/plasma/5.13.4/systemsettings-5.13.4.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.13.4/systemsettings-5.13.4.tar.xz
-Source99 : https://download.kde.org/stable/plasma/5.13.4/systemsettings-5.13.4.tar.xz.sig
+Version  : 5.13.5
+Release  : 4
+URL      : https://download.kde.org/stable/plasma/5.13.5/systemsettings-5.13.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.13.5/systemsettings-5.13.5.tar.xz
+Source99 : https://download.kde.org/stable/plasma/5.13.5/systemsettings-5.13.5.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
@@ -22,13 +22,10 @@ BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : kactivities-dev
 BuildRequires : kactivities-stats-dev
-BuildRequires : kcrash-dev
-BuildRequires : kdbusaddons-dev
-BuildRequires : kdeclarative-dev
+BuildRequires : kcmutils-dev
 BuildRequires : khtml-dev
 BuildRequires : kirigami2-dev
-BuildRequires : kpackage-dev
-BuildRequires : kwindowsystem-dev
+BuildRequires : kjs-dev
 BuildRequires : plasma-workspace-dev
 
 %description
@@ -99,14 +96,14 @@ locales components for the systemsettings package.
 
 
 %prep
-%setup -q -n systemsettings-5.13.4
+%setup -q -n systemsettings-5.13.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535436863
+export SOURCE_DATE_EPOCH=1536123434
 mkdir clr-build
 pushd clr-build
 %cmake ..
@@ -114,7 +111,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535436863
+export SOURCE_DATE_EPOCH=1536123434
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/systemsettings
 cp COPYING %{buildroot}/usr/share/doc/systemsettings/COPYING
@@ -148,6 +145,7 @@ popd
 /usr/share/kservices5/settings-appearance-icons.desktop
 /usr/share/kservices5/settings-appearance-workspacetheme.desktop
 /usr/share/kservices5/settings-appearance.desktop
+/usr/share/kservices5/settings-classic-view.desktop
 /usr/share/kservices5/settings-hardware-display.desktop
 /usr/share/kservices5/settings-hardware-input.desktop
 /usr/share/kservices5/settings-hardware-multimedia.desktop
@@ -177,6 +175,8 @@ popd
 /usr/share/kservicetypes5/systemsettingsexternalapp.desktop
 /usr/share/kservicetypes5/systemsettingsview.desktop
 /usr/share/kxmlgui5/systemsettings/systemsettingsui.rc
+/usr/share/systemsettings/classic/main.html
+/usr/share/systemsettings/classic/systemsettings-classic.css
 /usr/share/systemsettings/systemsettings.kcfg
 /usr/share/xdg/systemsettings.categories
 
@@ -217,6 +217,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libsystemsettingsview.so.3
+/usr/lib64/qt5/plugins/classic_mode.so
 /usr/lib64/qt5/plugins/icon_mode.so
 /usr/lib64/qt5/plugins/systemsettings_sidebar_mode.so
 
