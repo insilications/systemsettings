@@ -6,7 +6,7 @@
 #
 Name     : systemsettings
 Version  : 5.14.0
-Release  : 5
+Release  : 6
 URL      : https://download.kde.org/stable/plasma/5.14.0/systemsettings-5.14.0.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.14.0/systemsettings-5.14.0.tar.xz
 Source99 : https://download.kde.org/stable/plasma/5.14.0/systemsettings-5.14.0.tar.xz.sig
@@ -23,9 +23,14 @@ BuildRequires : buildreq-kde
 BuildRequires : kactivities-dev
 BuildRequires : kactivities-stats-dev
 BuildRequires : kcmutils-dev
+BuildRequires : kcrash-dev
+BuildRequires : kdbusaddons-dev
+BuildRequires : kdeclarative-dev
 BuildRequires : khtml-dev
 BuildRequires : kirigami2-dev
 BuildRequires : kjs-dev
+BuildRequires : kpackage-dev
+BuildRequires : kwindowsystem-dev
 BuildRequires : plasma-workspace-dev
 
 %description
@@ -103,7 +108,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1539120084
+export SOURCE_DATE_EPOCH=1539124399
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -111,7 +116,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1539120084
+export SOURCE_DATE_EPOCH=1539124399
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/systemsettings
 cp COPYING %{buildroot}/usr/share/doc/systemsettings/COPYING
