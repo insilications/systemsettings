@@ -6,7 +6,7 @@
 #
 Name     : systemsettings
 Version  : 5.14.3
-Release  : 9
+Release  : 10
 URL      : https://download.kde.org/stable/plasma/5.14.3/systemsettings-5.14.3.tar.xz
 Source0  : https://download.kde.org/stable/plasma/5.14.3/systemsettings-5.14.3.tar.xz
 Source99 : https://download.kde.org/stable/plasma/5.14.3/systemsettings-5.14.3.tar.xz.sig
@@ -23,21 +23,18 @@ BuildRequires : buildreq-kde
 BuildRequires : kactivities-dev
 BuildRequires : kactivities-stats-dev
 BuildRequires : kcmutils-dev
+BuildRequires : kcrash-dev
+BuildRequires : kdbusaddons-dev
+BuildRequires : kdeclarative-dev
 BuildRequires : khtml-dev
 BuildRequires : kirigami2-dev
 BuildRequires : kjs-dev
+BuildRequires : kpackage-dev
+BuildRequires : kwindowsystem-dev
 BuildRequires : plasma-workspace-dev
 
 %description
 No detailed description available
-
-%package abi
-Summary: abi components for the systemsettings package.
-Group: Default
-
-%description abi
-abi components for the systemsettings package.
-
 
 %package bin
 Summary: bin components for the systemsettings package.
@@ -111,7 +108,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1541538361
+export SOURCE_DATE_EPOCH=1542757497
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -119,7 +116,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1541538361
+export SOURCE_DATE_EPOCH=1542757497
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/systemsettings
 cp COPYING %{buildroot}/usr/share/package-licenses/systemsettings/COPYING
@@ -131,10 +128,6 @@ popd
 
 %files
 %defattr(-,root,root,-)
-
-%files abi
-%defattr(-,root,root,-)
-/usr/share/abi/libsystemsettingsview.so.3.abi
 
 %files bin
 %defattr(-,root,root,-)
