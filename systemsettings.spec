@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : systemsettings
-Version  : 5.15.1
-Release  : 14
-URL      : https://download.kde.org/stable/plasma/5.15.1/systemsettings-5.15.1.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.15.1/systemsettings-5.15.1.tar.xz
-Source99 : https://download.kde.org/stable/plasma/5.15.1/systemsettings-5.15.1.tar.xz.sig
+Version  : 5.15.2
+Release  : 15
+URL      : https://download.kde.org/stable/plasma/5.15.2/systemsettings-5.15.2.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.15.2/systemsettings-5.15.2.tar.xz
+Source99 : https://download.kde.org/stable/plasma/5.15.2/systemsettings-5.15.2.tar.xz.sig
 Summary  : KDE system manager for hardware, software, and workspaces
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
@@ -56,6 +56,7 @@ Requires: systemsettings-lib = %{version}-%{release}
 Requires: systemsettings-bin = %{version}-%{release}
 Requires: systemsettings-data = %{version}-%{release}
 Provides: systemsettings-devel = %{version}-%{release}
+Requires: systemsettings = %{version}-%{release}
 
 %description dev
 dev components for the systemsettings package.
@@ -96,14 +97,14 @@ locales components for the systemsettings package.
 
 
 %prep
-%setup -q -n systemsettings-5.15.1
+%setup -q -n systemsettings-5.15.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1550598207
+export SOURCE_DATE_EPOCH=1551207202
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -111,7 +112,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1550598207
+export SOURCE_DATE_EPOCH=1551207202
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/systemsettings
 cp COPYING %{buildroot}/usr/share/package-licenses/systemsettings/COPYING
