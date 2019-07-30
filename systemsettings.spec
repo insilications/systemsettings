@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : systemsettings
-Version  : 5.16.3
-Release  : 24
-URL      : https://download.kde.org/stable/plasma/5.16.3/systemsettings-5.16.3.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.16.3/systemsettings-5.16.3.tar.xz
-Source99 : https://download.kde.org/stable/plasma/5.16.3/systemsettings-5.16.3.tar.xz.sig
+Version  : 5.16.4
+Release  : 25
+URL      : https://download.kde.org/stable/plasma/5.16.4/systemsettings-5.16.4.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.16.4/systemsettings-5.16.4.tar.xz
+Source1 : https://download.kde.org/stable/plasma/5.16.4/systemsettings-5.16.4.tar.xz.sig
 Summary  : KDE system manager for hardware, software, and workspaces
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
@@ -23,14 +23,9 @@ BuildRequires : buildreq-kde
 BuildRequires : kactivities-dev
 BuildRequires : kactivities-stats-dev
 BuildRequires : kcmutils-dev
-BuildRequires : kcrash-dev
-BuildRequires : kdbusaddons-dev
-BuildRequires : kdeclarative-dev
 BuildRequires : khtml-dev
 BuildRequires : kirigami2-dev
 BuildRequires : kjs-dev
-BuildRequires : kpackage-dev
-BuildRequires : kwindowsystem-dev
 BuildRequires : plasma-workspace-dev
 
 %description
@@ -103,14 +98,14 @@ locales components for the systemsettings package.
 
 
 %prep
-%setup -q -n systemsettings-5.16.3
+%setup -q -n systemsettings-5.16.4
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1562776030
+export SOURCE_DATE_EPOCH=1564518244
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -126,7 +121,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1562776030
+export SOURCE_DATE_EPOCH=1564518244
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/systemsettings
 cp COPYING %{buildroot}/usr/share/package-licenses/systemsettings/COPYING
