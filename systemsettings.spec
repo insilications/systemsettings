@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : systemsettings
-Version  : 5.16.4
-Release  : 25
-URL      : https://download.kde.org/stable/plasma/5.16.4/systemsettings-5.16.4.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.16.4/systemsettings-5.16.4.tar.xz
-Source1 : https://download.kde.org/stable/plasma/5.16.4/systemsettings-5.16.4.tar.xz.sig
+Version  : 5.16.5
+Release  : 26
+URL      : https://download.kde.org/stable/plasma/5.16.5/systemsettings-5.16.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.16.5/systemsettings-5.16.5.tar.xz
+Source1 : https://download.kde.org/stable/plasma/5.16.5/systemsettings-5.16.5.tar.xz.sig
 Summary  : KDE system manager for hardware, software, and workspaces
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
@@ -23,9 +23,14 @@ BuildRequires : buildreq-kde
 BuildRequires : kactivities-dev
 BuildRequires : kactivities-stats-dev
 BuildRequires : kcmutils-dev
+BuildRequires : kcrash-dev
+BuildRequires : kdbusaddons-dev
+BuildRequires : kdeclarative-dev
 BuildRequires : khtml-dev
 BuildRequires : kirigami2-dev
 BuildRequires : kjs-dev
+BuildRequires : kpackage-dev
+BuildRequires : kwindowsystem-dev
 BuildRequires : plasma-workspace-dev
 
 %description
@@ -98,16 +103,17 @@ locales components for the systemsettings package.
 
 
 %prep
-%setup -q -n systemsettings-5.16.4
+%setup -q -n systemsettings-5.16.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1564518244
+export SOURCE_DATE_EPOCH=1567889588
 mkdir -p clr-build
 pushd clr-build
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -121,7 +127,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1564518244
+export SOURCE_DATE_EPOCH=1567889588
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/systemsettings
 cp COPYING %{buildroot}/usr/share/package-licenses/systemsettings/COPYING
@@ -185,6 +191,7 @@ popd
 /usr/share/kservicetypes5/systemsettingsexternalapp.desktop
 /usr/share/kservicetypes5/systemsettingsview.desktop
 /usr/share/kxmlgui5/systemsettings/systemsettingsui.rc
+/usr/share/metainfo/org.kde.systemsettings.metainfo.xml
 /usr/share/systemsettings/classic/main.html
 /usr/share/systemsettings/classic/systemsettings-classic.css
 /usr/share/systemsettings/systemsettings.kcfg
