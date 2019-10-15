@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : systemsettings
-Version  : 5.16.5
-Release  : 26
-URL      : https://download.kde.org/stable/plasma/5.16.5/systemsettings-5.16.5.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.16.5/systemsettings-5.16.5.tar.xz
-Source1 : https://download.kde.org/stable/plasma/5.16.5/systemsettings-5.16.5.tar.xz.sig
+Version  : 5.17.0
+Release  : 27
+URL      : https://download.kde.org/stable/plasma/5.17.0/systemsettings-5.17.0.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.17.0/systemsettings-5.17.0.tar.xz
+Source1 : https://download.kde.org/stable/plasma/5.17.0/systemsettings-5.17.0.tar.xz.sig
 Summary  : KDE system manager for hardware, software, and workspaces
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
@@ -23,14 +23,8 @@ BuildRequires : buildreq-kde
 BuildRequires : kactivities-dev
 BuildRequires : kactivities-stats-dev
 BuildRequires : kcmutils-dev
-BuildRequires : kcrash-dev
-BuildRequires : kdbusaddons-dev
-BuildRequires : kdeclarative-dev
-BuildRequires : khtml-dev
 BuildRequires : kirigami2-dev
 BuildRequires : kjs-dev
-BuildRequires : kpackage-dev
-BuildRequires : kwindowsystem-dev
 BuildRequires : plasma-workspace-dev
 
 %description
@@ -103,14 +97,14 @@ locales components for the systemsettings package.
 
 
 %prep
-%setup -q -n systemsettings-5.16.5
+%setup -q -n systemsettings-5.17.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1567889588
+export SOURCE_DATE_EPOCH=1571169747
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -123,15 +117,15 @@ export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1567889588
+export SOURCE_DATE_EPOCH=1571169747
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/systemsettings
-cp COPYING %{buildroot}/usr/share/package-licenses/systemsettings/COPYING
-cp COPYING.DOC %{buildroot}/usr/share/package-licenses/systemsettings/COPYING.DOC
+cp %{_builddir}/systemsettings-5.17.0/COPYING %{buildroot}/usr/share/package-licenses/systemsettings/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/systemsettings-5.17.0/COPYING.DOC %{buildroot}/usr/share/package-licenses/systemsettings/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
 pushd clr-build
 %make_install
 popd
@@ -148,7 +142,6 @@ popd
 %defattr(-,root,root,-)
 /usr/share/applications/kdesystemsettings.desktop
 /usr/share/applications/systemsettings.desktop
-/usr/share/kpackage/genericqml/org.kde.systemsettings.sidebar/contents/ui/ActionMenu.qml
 /usr/share/kpackage/genericqml/org.kde.systemsettings.sidebar/contents/ui/CategoriesPage.qml
 /usr/share/kpackage/genericqml/org.kde.systemsettings.sidebar/contents/ui/IntroIcon.qml
 /usr/share/kpackage/genericqml/org.kde.systemsettings.sidebar/contents/ui/SubCategoryPage.qml
@@ -159,9 +152,7 @@ popd
 /usr/share/kservices5/settings-appearance-color.desktop
 /usr/share/kservices5/settings-appearance-font.desktop
 /usr/share/kservices5/settings-appearance-icons.desktop
-/usr/share/kservices5/settings-appearance-workspacetheme.desktop
 /usr/share/kservices5/settings-appearance.desktop
-/usr/share/kservices5/settings-classic-view.desktop
 /usr/share/kservices5/settings-hardware-display.desktop
 /usr/share/kservices5/settings-hardware-input.desktop
 /usr/share/kservices5/settings-hardware-multimedia.desktop
@@ -181,6 +172,7 @@ popd
 /usr/share/kservices5/settings-personalization-regionalsettings.desktop
 /usr/share/kservices5/settings-personalization.desktop
 /usr/share/kservices5/settings-sidebar-view.desktop
+/usr/share/kservices5/settings-system-administration.desktop
 /usr/share/kservices5/settings-workspace-desktopbehavior.desktop
 /usr/share/kservices5/settings-workspace-search.desktop
 /usr/share/kservices5/settings-workspace-session.desktop
@@ -192,10 +184,8 @@ popd
 /usr/share/kservicetypes5/systemsettingsview.desktop
 /usr/share/kxmlgui5/systemsettings/systemsettingsui.rc
 /usr/share/metainfo/org.kde.systemsettings.metainfo.xml
-/usr/share/systemsettings/classic/main.html
-/usr/share/systemsettings/classic/systemsettings-classic.css
+/usr/share/qlogging-categories5/systemsettings.categories
 /usr/share/systemsettings/systemsettings.kcfg
-/usr/share/xdg/systemsettings.categories
 
 %files dev
 %defattr(-,root,root,-)
@@ -216,6 +206,8 @@ popd
 /usr/share/doc/HTML/de/systemsettings/index.docbook
 /usr/share/doc/HTML/en/systemsettings/index.cache.bz2
 /usr/share/doc/HTML/en/systemsettings/index.docbook
+/usr/share/doc/HTML/id/systemsettings/index.cache.bz2
+/usr/share/doc/HTML/id/systemsettings/index.docbook
 /usr/share/doc/HTML/it/systemsettings/index.cache.bz2
 /usr/share/doc/HTML/it/systemsettings/index.docbook
 /usr/share/doc/HTML/nl/systemsettings/index.cache.bz2
@@ -234,14 +226,13 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libsystemsettingsview.so.3
-/usr/lib64/qt5/plugins/classic_mode.so
 /usr/lib64/qt5/plugins/icon_mode.so
 /usr/lib64/qt5/plugins/systemsettings_sidebar_mode.so
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/systemsettings/COPYING
-/usr/share/package-licenses/systemsettings/COPYING.DOC
+/usr/share/package-licenses/systemsettings/7c203dee3a03037da436df03c4b25b659c073976
+/usr/share/package-licenses/systemsettings/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
 
 %files locales -f systemsettings.lang
 %defattr(-,root,root,-)
