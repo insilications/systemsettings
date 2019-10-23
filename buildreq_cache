@@ -1,4 +1,4 @@
-5.17.0
+5.17.1
 kactivities-dev
 kactivities-stats-dev
 kcrash-dev
@@ -9,3 +9,4 @@ kirigami2-dev
 kpackage-dev
 kwindowsystem-dev
 plasma-workspace-dev
+util-linux
