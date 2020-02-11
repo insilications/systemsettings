@@ -1,12 +1,5 @@
-5.17.5
+5.18.0
 kactivities-dev
 kactivities-stats-dev
-kcrash-dev
-kdbusaddons-dev
-kdeclarative-dev
-khtml-dev
 kirigami2-dev
-kpackage-dev
-kwindowsystem-dev
 plasma-workspace-dev
-util-linux
