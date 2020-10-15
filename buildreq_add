@@ -1,4 +1,6 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
-kjs-dev
+kactivities-dev
+kactivities-stats-dev
 kcmutils-dev
+kjs-dev
