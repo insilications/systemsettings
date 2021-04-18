@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : systemsettings
-Version  : 5.20.5
-Release  : 49
-URL      : https://download.kde.org/stable/plasma/5.20.5/systemsettings-5.20.5.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.20.5/systemsettings-5.20.5.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.20.5/systemsettings-5.20.5.tar.xz.sig
+Version  : 5.21.4
+Release  : 50
+URL      : https://download.kde.org/stable/plasma/5.21.4/systemsettings-5.21.4.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.21.4/systemsettings-5.21.4.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.21.4/systemsettings-5.21.4.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
@@ -51,19 +51,6 @@ Group: Data
 data components for the systemsettings package.
 
 
-%package dev
-Summary: dev components for the systemsettings package.
-Group: Development
-Requires: systemsettings-lib = %{version}-%{release}
-Requires: systemsettings-bin = %{version}-%{release}
-Requires: systemsettings-data = %{version}-%{release}
-Provides: systemsettings-devel = %{version}-%{release}
-Requires: systemsettings = %{version}-%{release}
-
-%description dev
-dev components for the systemsettings package.
-
-
 %package doc
 Summary: doc components for the systemsettings package.
 Group: Documentation
@@ -99,15 +86,15 @@ locales components for the systemsettings package.
 
 
 %prep
-%setup -q -n systemsettings-5.20.5
-cd %{_builddir}/systemsettings-5.20.5
+%setup -q -n systemsettings-5.21.4
+cd %{_builddir}/systemsettings-5.21.4
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1609884206
+export SOURCE_DATE_EPOCH=1618706137
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -123,11 +110,11 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1609884206
+export SOURCE_DATE_EPOCH=1618706137
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/systemsettings
-cp %{_builddir}/systemsettings-5.20.5/COPYING %{buildroot}/usr/share/package-licenses/systemsettings/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/systemsettings-5.20.5/COPYING.DOC %{buildroot}/usr/share/package-licenses/systemsettings/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
+cp %{_builddir}/systemsettings-5.21.4/COPYING %{buildroot}/usr/share/package-licenses/systemsettings/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/systemsettings-5.21.4/COPYING.DOC %{buildroot}/usr/share/package-licenses/systemsettings/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
 pushd clr-build
 %make_install
 popd
@@ -153,7 +140,6 @@ popd
 /usr/share/kpackage/genericqml/org.kde.systemsettings.sidebar/contents/ui/introPage.qml
 /usr/share/kpackage/genericqml/org.kde.systemsettings.sidebar/contents/ui/main.qml
 /usr/share/kpackage/genericqml/org.kde.systemsettings.sidebar/metadata.desktop
-/usr/share/kservices5/settings-appearance-applicationstyle.desktop
 /usr/share/kservices5/settings-appearance-color.desktop
 /usr/share/kservices5/settings-appearance-font.desktop
 /usr/share/kservices5/settings-appearance-icons.desktop
@@ -165,7 +151,6 @@ popd
 /usr/share/kservices5/settings-hardware-powermanagement.desktop
 /usr/share/kservices5/settings-hardware-removable-storage.desktop
 /usr/share/kservices5/settings-hardware.desktop
-/usr/share/kservices5/settings-icon-view.desktop
 /usr/share/kservices5/settings-network-bluetooth.desktop
 /usr/share/kservices5/settings-network-connectivity.desktop
 /usr/share/kservices5/settings-network-networksettings.desktop
@@ -176,7 +161,7 @@ popd
 /usr/share/kservices5/settings-personalization-notification.desktop
 /usr/share/kservices5/settings-personalization-regionalsettings.desktop
 /usr/share/kservices5/settings-personalization.desktop
-/usr/share/kservices5/settings-sidebar-view.desktop
+/usr/share/kservices5/settings-root-category.desktop
 /usr/share/kservices5/settings-system-administration.desktop
 /usr/share/kservices5/settings-workspace-desktopbehavior.desktop
 /usr/share/kservices5/settings-workspace-search.desktop
@@ -192,17 +177,6 @@ popd
 /usr/share/qlogging-categories5/systemsettings.categories
 /usr/share/systemsettings/systemsettings.kcfg
 
-%files dev
-%defattr(-,root,root,-)
-/usr/include/systemsettingsview/BaseData.h
-/usr/include/systemsettingsview/BaseMode.h
-/usr/include/systemsettingsview/MenuItem.h
-/usr/include/systemsettingsview/MenuModel.h
-/usr/include/systemsettingsview/MenuProxyModel.h
-/usr/include/systemsettingsview/ModuleView.h
-/usr/include/systemsettingsview/systemsettingsview_export.h
-/usr/lib64/libsystemsettingsview.so
-
 %files doc
 %defattr(0644,root,root,0755)
 /usr/share/doc/HTML/ca/systemsettings/index.cache.bz2
@@ -217,8 +191,6 @@ popd
 /usr/share/doc/HTML/id/systemsettings/index.docbook
 /usr/share/doc/HTML/it/systemsettings/index.cache.bz2
 /usr/share/doc/HTML/it/systemsettings/index.docbook
-/usr/share/doc/HTML/ko/systemsettings/index.cache.bz2
-/usr/share/doc/HTML/ko/systemsettings/index.docbook
 /usr/share/doc/HTML/nl/systemsettings/index.cache.bz2
 /usr/share/doc/HTML/nl/systemsettings/index.docbook
 /usr/share/doc/HTML/pt/systemsettings/index.cache.bz2
@@ -227,14 +199,15 @@ popd
 /usr/share/doc/HTML/pt_BR/systemsettings/index.docbook
 /usr/share/doc/HTML/ru/systemsettings/index.cache.bz2
 /usr/share/doc/HTML/ru/systemsettings/index.docbook
+/usr/share/doc/HTML/sv/systemsettings/index.cache.bz2
+/usr/share/doc/HTML/sv/systemsettings/index.docbook
 /usr/share/doc/HTML/uk/systemsettings/index.cache.bz2
 /usr/share/doc/HTML/uk/systemsettings/index.docbook
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/libsystemsettingsview.so.3
-/usr/lib64/qt5/plugins/icon_mode.so
-/usr/lib64/qt5/plugins/systemsettings_sidebar_mode.so
+/usr/lib64/qt5/plugins/systemsettingsview/icon_mode.so
+/usr/lib64/qt5/plugins/systemsettingsview/systemsettings_sidebar_mode.so
 
 %files license
 %defattr(0644,root,root,0755)
