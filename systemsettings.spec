@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : systemsettings
-Version  : 5.22.0
-Release  : 51
-URL      : https://download.kde.org/stable/plasma/5.22.0/systemsettings-5.22.0.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.22.0/systemsettings-5.22.0.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.22.0/systemsettings-5.22.0.tar.xz.sig
+Version  : 5.22.1
+Release  : 52
+URL      : https://download.kde.org/stable/plasma/5.22.1/systemsettings-5.22.1.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.22.1/systemsettings-5.22.1.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.22.1/systemsettings-5.22.1.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 GPL-3.0 LGPL-2.0
@@ -86,15 +86,15 @@ locales components for the systemsettings package.
 
 
 %prep
-%setup -q -n systemsettings-5.22.0
-cd %{_builddir}/systemsettings-5.22.0
+%setup -q -n systemsettings-5.22.1
+cd %{_builddir}/systemsettings-5.22.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1623436949
+export SOURCE_DATE_EPOCH=1623814860
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -110,14 +110,14 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1623436949
+export SOURCE_DATE_EPOCH=1623814860
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/systemsettings
-cp %{_builddir}/systemsettings-5.22.0/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/systemsettings/3e8971c6c5f16674958913a94a36b1ea7a00ac46
-cp %{_builddir}/systemsettings-5.22.0/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/systemsettings/3e8971c6c5f16674958913a94a36b1ea7a00ac46
-cp %{_builddir}/systemsettings-5.22.0/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/systemsettings/a4c60b3fefda228cd7439d3565df043192fef137
-cp %{_builddir}/systemsettings-5.22.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/systemsettings/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/systemsettings-5.22.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/systemsettings/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/systemsettings-5.22.1/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/systemsettings/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/systemsettings-5.22.1/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/systemsettings/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/systemsettings-5.22.1/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/systemsettings/a4c60b3fefda228cd7439d3565df043192fef137
+cp %{_builddir}/systemsettings-5.22.1/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/systemsettings/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/systemsettings-5.22.1/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/systemsettings/7d9831e05094ce723947d729c2a46a09d6e90275
 pushd clr-build
 %make_install
 popd
