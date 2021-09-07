@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC94D18F7F05997E (jr@jriddell.org)
 #
 Name     : systemsettings
-Version  : 5.22.1
-Release  : 52
-URL      : https://download.kde.org/stable/plasma/5.22.1/systemsettings-5.22.1.tar.xz
-Source0  : https://download.kde.org/stable/plasma/5.22.1/systemsettings-5.22.1.tar.xz
-Source1  : https://download.kde.org/stable/plasma/5.22.1/systemsettings-5.22.1.tar.xz.sig
+Version  : 5.22.5
+Release  : 53
+URL      : https://download.kde.org/stable/plasma/5.22.5/systemsettings-5.22.5.tar.xz
+Source0  : https://download.kde.org/stable/plasma/5.22.5/systemsettings-5.22.5.tar.xz
+Source1  : https://download.kde.org/stable/plasma/5.22.5/systemsettings-5.22.5.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 GPL-3.0 LGPL-2.0
@@ -86,38 +86,39 @@ locales components for the systemsettings package.
 
 
 %prep
-%setup -q -n systemsettings-5.22.1
-cd %{_builddir}/systemsettings-5.22.1
+%setup -q -n systemsettings-5.22.5
+cd %{_builddir}/systemsettings-5.22.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1623814860
+export SOURCE_DATE_EPOCH=1630973323
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1623814860
+export SOURCE_DATE_EPOCH=1630973323
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/systemsettings
-cp %{_builddir}/systemsettings-5.22.1/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/systemsettings/3e8971c6c5f16674958913a94a36b1ea7a00ac46
-cp %{_builddir}/systemsettings-5.22.1/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/systemsettings/3e8971c6c5f16674958913a94a36b1ea7a00ac46
-cp %{_builddir}/systemsettings-5.22.1/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/systemsettings/a4c60b3fefda228cd7439d3565df043192fef137
-cp %{_builddir}/systemsettings-5.22.1/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/systemsettings/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/systemsettings-5.22.1/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/systemsettings/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/systemsettings-5.22.5/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/systemsettings/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/systemsettings-5.22.5/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/systemsettings/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/systemsettings-5.22.5/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/systemsettings/2123756e0b1fc8243547235a33c0fcabfe3b9a51
+cp %{_builddir}/systemsettings-5.22.5/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/systemsettings/a4c60b3fefda228cd7439d3565df043192fef137
+cp %{_builddir}/systemsettings-5.22.5/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/systemsettings/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/systemsettings-5.22.5/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/systemsettings/7d9831e05094ce723947d729c2a46a09d6e90275
 pushd clr-build
 %make_install
 popd
@@ -215,6 +216,7 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
+/usr/share/package-licenses/systemsettings/2123756e0b1fc8243547235a33c0fcabfe3b9a51
 /usr/share/package-licenses/systemsettings/3e8971c6c5f16674958913a94a36b1ea7a00ac46
 /usr/share/package-licenses/systemsettings/7d9831e05094ce723947d729c2a46a09d6e90275
 /usr/share/package-licenses/systemsettings/a4c60b3fefda228cd7439d3565df043192fef137
