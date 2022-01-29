@@ -1,6 +1,14 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
+buildreq-cmake
+buildreq-kde
+extra-cmake-modules-data
 kactivities-dev
 kactivities-stats-dev
 kcmutils-dev
+kdoctools-dev
+ki18n-dev
+kirigami2-dev
 kjs-dev
+krunner-dev
+plasma-workspace-dev
